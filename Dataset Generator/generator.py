@@ -1,5 +1,7 @@
 import random
+import json
 
+# generate random cases
 cases = []
 for i in range(10):
     case = {}
@@ -19,4 +21,6 @@ for i in range(10):
     case["Recommended Insulin Bolus"] = round(random.uniform(0, 12), 2)
     cases.append(case)
 
-print(cases)
+# write cases to JSON file
+with open("cases.json", "w") as f:
+    json.dump(cases, f)
