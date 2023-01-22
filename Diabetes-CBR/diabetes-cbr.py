@@ -4,12 +4,15 @@ from math import sqrt
 # read cases from JSON file
 with open("cases.json", "r") as f:
     cases = json.load(f)
+    for case in cases:
+        # fix for KeyError: Time of day
+        case["Time of day"] = 0
 
 # function to calculate euclidean distance
 def euclidean_distance(case1, case2):
     distance = 0
     for key in case1:
-        if key != "Recommended Insulin Bolus":
+        if key != "Recommended Insulin Bolus" and key != "Day time":
             distance += (case1[key] - case2[key]) ** 2
     return sqrt(distance)
 
@@ -36,7 +39,14 @@ new_case["Physical activity preprandial - Heart rate"] = int(input("Enter heart 
 new_case["Physical activity preprandial - Intensity"] = int(input("Enter intensity of physical activity before meal (0-6): "))
 new_case["Physical activity postprandial - Duration"] = int(input("Enter duration of physical activity after meal (min): "))
 new_case["Physical activity postprandial - Intensity"] = int(input("Enter intensity of physical activity after meal (0-6): "))
-new_case["Day time"] = input("Enter time of day (hh:mm): ")
+
+# prompt user to enter time of day
+time_of_day = input("Enter time of day (hh:mm): ")
+hour, minute = time_of_day.split(':')
+hour = int(hour)
+minute = int(minute)
+time_in_minutes = hour * 60 + minute
+new_case["Time of day"] = time_in_minutes
 
 # ask user for value of k
 k = int(input("Enter value of k: "))
@@ -52,3 +62,4 @@ recommended_insulin_bolus /= k
 
 # print recommended insulin bolus
 print("Recommended Insulin Bolus: {} U".format(round(recommended_insulin_bolus, 2)))
+
