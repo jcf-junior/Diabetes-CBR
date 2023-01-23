@@ -1,6 +1,10 @@
 import tkinter as tk
 import json
 
+# root undefined fix
+root = tk.Tk()
+root.title("Diabetes CBR")
+
 def find_nearest_neighbors(new_case, k):
     # load cases from json file
     with open('cases.json') as file:
@@ -66,4 +70,11 @@ def get_inputs():
     new_case = {'Preprandial BG': bg, 'IOB': iob, 'BG Target': bg_target, 'CHO': cho, 'Weight': weight, 'ICR': icr, 'ISF': isf, 'Pre-activity duration': pre_activity_duration, 'Pre-activity heart rate': pre_activity_hr, 'Post-activity duration': post_activity_duration, 'Post-activity intensity': post_activity_intensity, 'Time of day': time_of_day}
     return new_case
 
+def cbr(new_case):
+    nearest_neighbors = find_nearest_neighbors(new_case, k)
+    recommended_insulin_bolus = sum(case['Insulin bolus'] for case in nearest_neighbors) / k
+    label = tk.Label(root, text=f'Recommended insulin bolus: {recommended_insulin_bolus}')
+    label.grid(row=13, column=1)
+
+submit_button = tk.Button(root, text="Submit", command=lambda: cbr(get_inputs()))
 
