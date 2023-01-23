@@ -24,12 +24,6 @@ def euclidean_distance(case1, case2):
             distance += (case1[key] - case2[key]) ** 2
     return distance ** 0.5
 
-k_label = tk.Label(root, text="Enter the value of k: ")
-k_label.grid(row=12, column=0)
-k_entry = tk.Entry(root)
-k_entry.grid(row=12, column=1)
-k = int(k_entry.get())
-
 def get_inputs():
     bg_entry = tk.Entry(root)
     bg_entry.grid(row=0, column=1)
