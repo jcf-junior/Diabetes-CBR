@@ -1,3 +1,7 @@
+# Dataset Generator
+
+This program is a simulation of a case-based reasoning (CBR) system for diabetes management. It uses the k-NN algorithm to determine the recommended insulin bolus for a new case based on the similarity to existing cases in a JSON file.
+
 # Diabetes-CBR
 
 This program is a simulation of a case-based reasoning (CBR) system for diabetes management. It uses the k-NN algorithm to determine the recommended insulin bolus for a new case based on the similarity to existing cases in a JSON file.
@@ -18,10 +22,10 @@ This program is a simulation of a case-based reasoning (CBR) system for diabetes
 - Patient weight – [50-140] kg
 - ICR – [8-23]
 - ISF – [25-55]
-- Physical activity preprandial:
+* Physical activity preprandial:
 ..* Duration- [0 - 100] min
 ..* Heart rate- [40-110] bpm or intensity [0-6]
-- Physical activity postprandial:
+* Physical activity postprandial:
 ..* Duration- [0 - 100] min
 ..* Intensity- [0-6]
 - Day time - (hh:mm)
