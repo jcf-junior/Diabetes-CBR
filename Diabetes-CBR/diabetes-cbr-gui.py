@@ -67,6 +67,17 @@ def get_inputs():
     time_of_day_entry = tk.Entry(root)
     time_of_day_entry.grid(row=11, column=1)
     time_of_day = time_of_day_entry.get()
+    #k input
+    k_label = tk.Label(root, text="Enter the value of k: ")
+    k_label.grid(row=12, column=0)
+    k_entry = tk.Entry(root)
+    k_entry.grid(row=12, column=1)
+    k_value = k_entry.get()
+    if len(k_value) > 0:
+        k = int(k_value)
+    else:
+        tk.Label(root, text="Please enter a value for k").grid(row=13, column=1)
+    # create case
     new_case = {'Preprandial BG': bg, 'IOB': iob, 'BG Target': bg_target, 'CHO': cho, 'Weight': weight, 'ICR': icr, 'ISF': isf, 'Pre-activity duration': pre_activity_duration, 'Pre-activity heart rate': pre_activity_hr, 'Post-activity duration': post_activity_duration, 'Post-activity intensity': post_activity_intensity, 'Time of day': time_of_day}
     return new_case
 
