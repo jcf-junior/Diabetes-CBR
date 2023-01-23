@@ -1,6 +1,6 @@
 # Dataset Generator
 
-This program is a simulation of a case-based reasoning (CBR) system for diabetes management. It uses the k-NN algorithm to determine the recommended insulin bolus for a new case based on the similarity to existing cases in a JSON file.
+This program generates a dataset of random values within a specific range for each input. This dataset may not be accurate for real-world applications and should only be used for testing purposes.
 
 # Diabetes-CBR
 
