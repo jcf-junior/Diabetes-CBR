@@ -20,6 +20,12 @@ def euclidean_distance(case1, case2):
             distance += (case1[key] - case2[key]) ** 2
     return distance ** 0.5
 
+k_label = tk.Label(root, text="Enter the value of k: ")
+k_label.grid(row=12, column=0)
+k_entry = tk.Entry(root)
+k_entry.grid(row=12, column=1)
+k = int(k_entry.get())
+
 def get_inputs():
     bg_entry = tk.Entry(root)
     bg_entry.grid(row=0, column=1)
@@ -54,19 +60,10 @@ def get_inputs():
     post_activity_intensity_entry = tk.Entry(root)
     post_activity_intensity_entry.grid(row=10, column=1)
     post_activity_intensity = float(post_activity_intensity_entry.get())
-    # labels
-    k_label = tk.Label(root, text="Enter the value of k: ")
-    k_label.grid(row=12, column=0)
-    k_entry = tk.Entry(root)
-    k_entry.grid(row=12, column=1)
-    k = int(k_entry.get())
-
-
-def cbr(new_case):
-    nearest_neighbors = find_nearest_neighbors(new_case, k)
-    insulin_bolus_list = [case['Insulin bolus'] for case in nearest_neighbors]
-    recommended_insulin_bolus = sum(insulin_bolus_list) / len(insulin_bolus_list)
-    result_label = tk.Label(root, text="Recommended insulin bolus: {:.2f} U".format(recommended_insulin_bolus))
-    result_label.grid(row=13, column=0)
+    time_of_day_entry = tk.Entry(root)
+    time_of_day_entry.grid(row=11, column=1)
+    time_of_day = time_of_day_entry.get()
+    new_case = {'Preprandial BG': bg, 'IOB': iob, 'BG Target': bg_target, 'CHO': cho, 'Weight': weight, 'ICR': icr, 'ISF': isf, 'Pre-activity duration': pre_activity_duration, 'Pre-activity heart rate': pre_activity_hr, 'Post-activity duration': post_activity_duration, 'Post-activity intensity': post_activity_intensity, 'Time of day': time_of_day}
+    return new_case
 
 
