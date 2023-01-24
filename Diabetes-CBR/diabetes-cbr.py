@@ -13,21 +13,12 @@ with open("cases.json", "r") as f:
 with open("config.json", "r") as f:
     config = json.load(f)
     selected_distance_metric = config["selected_distance_metric"]
-# Dictionary dependency fix    
-    selected_distance_metric = globals()[selected_distance_metric]
-
-# Error handler for KeyError
-try:
-    selected_distance_metric = globals()[selected_distance_metric]
-except KeyError:
-    print("Invalid distance metric selected.")
-    exit()
 
 # Find k neighbors
-def find_nearest_neighbors(new_case, k, distance_metric):
+def find_nearest_neighbors(new_case, k, selected_distance_metric):
     distances = []
     for case in cases:
-        distance = distance_metric(new_case, case)
+        distance = selected_distance_metric(new_case, case)
         distances.append((case, distance))
     distances.sort(key=lambda x: x[1])
     return [x[0] for x in distances[:k]]
@@ -59,7 +50,7 @@ new_case["Time of day"] = time_in_minutes
 k = int(input("Enter value of k: "))
 
 # find k nearest neighbors
-nearest_neighbors = find_nearest_neighbors(new_case, k)
+nearest_neighbors = find_nearest_neighbors(new_case, k, selected_distance_metric)
 
 # determine recommended insulin bolus
 recommended_insulin_bolus = 0
