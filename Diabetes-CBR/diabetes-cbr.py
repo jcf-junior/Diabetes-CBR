@@ -16,6 +16,14 @@ with open("config.json", "r") as f:
 # Dictionary dependency fix    
     selected_distance_metric = globals()[selected_distance_metric]
 
+# Error handler for KeyError
+try:
+    selected_distance_metric = globals()[selected_distance_metric]
+except KeyError:
+    print("Invalid distance metric selected.")
+    exit()
+
+# Find k neighbors
 def find_nearest_neighbors(new_case, k, distance_metric):
     distances = []
     for case in cases:
