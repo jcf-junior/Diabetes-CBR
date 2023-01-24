@@ -3,7 +3,7 @@ from math import sqrt
 from Metrics.distance_metrics import *
 import Metrics.distance_metrics as dm
 
-
+################## Cases ##################
 # read cases from JSON file
 with open("cases.json", "r") as f:
     cases = json.load(f)
@@ -11,7 +11,7 @@ with open("cases.json", "r") as f:
         # fix for KeyError: Time of day
         case["Time of day"] = 0
 
-
+################## Metrics ##################
 # Read selected distance metric from JSON file
 with open("config.json", "r") as f:
     config = json.load(f)
