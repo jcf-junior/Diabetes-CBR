@@ -10,23 +10,45 @@ with open("cases.json", "r") as f:
     for case in cases:
         # fix for KeyError: Time of day
         case["Time of day"] = 0
+############################################
 
 ################## Metrics ##################
 # Read selected distance metric from JSON file
 with open("config.json", "r") as f:
     config = json.load(f)
     selected_distance_metric = config["selected_distance_metric"]
-
 # Error handler for KeyError
 try:
     selected_distance_metric = globals()[selected_distance_metric]
 except KeyError:
     print("Invalid distance metric selected.\nExiting...")
     exit()
+############################################
 
+################## Inputs ##################
 # read inputs from JSON file
 with open("inputs.json", "r") as f:
-    inputs = json.load(f)    
+    inputs = json.load(f)
+############################################
+
+################## Algorithms ##################
+    # read the config.json file
+with open("config.json", "r") as f:
+    config = json.load(f)
+    selected_algorithm = config["selected_algorithm"]
+
+# import the appropriate algorithm file
+if selected_algorithm == "algorithm1":
+    import algorithm1 as algo
+elif selected_algorithm == "algorithm2":
+    import algorithm2 as algo
+
+# call the function for the selected algorithm
+output = algo.run_algorithm(input_data)
+
+# process and print the output
+print(output)
+############################################
 
 # Find k neighbors
 def find_nearest_neighbors(new_case, k, selected_distance_metric):
