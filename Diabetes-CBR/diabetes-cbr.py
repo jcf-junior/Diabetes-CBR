@@ -1,5 +1,6 @@
 import json
 from math import sqrt
+from Metrics.distance_metrics import *
 
 # read cases from JSON file
 with open("cases.json", "r") as f:
@@ -8,19 +9,17 @@ with open("cases.json", "r") as f:
         # fix for KeyError: Time of day
         case["Time of day"] = 0
 
-# function to calculate euclidean distance
-def euclidean_distance(case1, case2):
-    distance = 0
-    for key in case1:
-        if key != "Recommended Insulin Bolus" and key != "Day time":
-            distance += (case1[key] - case2[key]) ** 2
-    return sqrt(distance)
+# Read selected distance metric from JSON file
+with open("config.json", "r") as f:
+    config = json.load(f)
+    selected_distance_metric = config["selected_distance_metric"]
+# Dictionary dependency fix    
+    selected_distance_metric = globals()[selected_distance_metric]
 
-# function to find k nearest neighbors
-def find_nearest_neighbors(new_case, k):
+def find_nearest_neighbors(new_case, k, distance_metric):
     distances = []
     for case in cases:
-        distance = euclidean_distance(new_case, case)
+        distance = distance_metric(new_case, case)
         distances.append((case, distance))
     distances.sort(key=lambda x: x[1])
     return [x[0] for x in distances[:k]]
