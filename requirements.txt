@@ -1,6 +1,8 @@
 ###### Requirements without Version Specifiers ######
 # Requirements for k_nearest_neighbors.py algorithm
 importlib
+# Requirements for k_nearest_neighbors.py algorithm
+# N/A
 # Requirements for decision_trees.py algorithm
 scikit-learn
 pandas
