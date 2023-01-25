@@ -1,7 +1,9 @@
 import json
 from math import sqrt
 from Metrics.distance_metrics import *
+import k_nearest_neighbors
 import Metrics.distance_metrics as dm
+import importlib
 
 ################## Cases ##################
 # read cases from JSON file
@@ -37,11 +39,8 @@ with open("config.json", "r") as f:
     config = json.load(f)
     selected_algorithm = config["selected_algorithm"]
 
-# import the appropriate algorithm file
-if selected_algorithm == "algorithm1":
-    import algorithm1 as algo
-elif selected_algorithm == "algorithm2":
-    import algorithm2 as algo
+algorithm_module = importlib.import_module(selected_algorithm)
+algorithm_module.run_algorithm()
 
 # call the function for the selected algorithm
 output = algo.run_algorithm(input_data)
@@ -89,25 +88,8 @@ new_case["Physical activity preprandial - Heart rate"] = inputs["Physical activi
 hour, minute = time_of_day.split(':')
 hour = int(hour)
 minute = int(minute)
-
 # Convert time of day to minutes
 time_in_minutes = hour * 60 + minute
-
 # Assign time of day to new_case
 new_case["Time of day"] = time_in_minutes
-
-# ask user for value of k
-k = int(input("Enter value of k: "))
-
-# find k nearest neighbors
-nearest_neighbors = find_nearest_neighbors(new_case, k, selected_distance_metric)
-
-# determine recommended insulin bolus
-recommended_insulin_bolus = 0
-for neighbor in nearest_neighbors:
-    recommended_insulin_bolus += neighbor["Recommended Insulin Bolus"]
-recommended_insulin_bolus /= k
-
-# print recommended insulin bolus
-print("Recommended Insulin Bolus: {} U".format(round(recommended_insulin_bolus, 2)))
 
