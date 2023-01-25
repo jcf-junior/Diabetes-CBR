@@ -16,7 +16,6 @@ with open("cases.json", "r") as f:
 with open("config.json", "r") as f:
     config = json.load(f)
     selected_distance_metric = config["selected_distance_metric"]
-
 # Error handler for KeyError
 try:
     selected_distance_metric = globals()[selected_distance_metric]
@@ -26,8 +25,13 @@ except KeyError:
 
 # read inputs from JSON file
 with open("inputs.json", "r") as f:
-    inputs = json.load(f)    
+    inputs = json.load(f)
 
+# get k from config.json
+with open("config.json", "r") as f:
+    config = json.load(f)
+    k = int(config["k"])        
+ 
 # Find k neighbors
 def find_nearest_neighbors(new_case, k, selected_distance_metric):
     distances = []
@@ -74,8 +78,8 @@ time_in_minutes = hour * 60 + minute
 # Assign time of day to new_case
 new_case["Time of day"] = time_in_minutes
 
-# ask user for value of k
-k = int(input("Enter value of k: "))
+# # ask user for value of k
+# k = int(input("Enter value of k: "))
 
 # find k nearest neighbors
 nearest_neighbors = find_nearest_neighbors(new_case, k, selected_distance_metric)

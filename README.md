@@ -6,14 +6,14 @@ This program is a simulation of a case-based reasoning (CBR) system for diabetes
 
 This program is a simulation of a case-based reasoning (CBR) system for diabetes management. It uses the k-NN algorithm to determine the recommended insulin bolus for a new case based on the similarity to existing cases in a JSON file.
 
-## Usage
+## Installation & Usage
 1. Clone or download the repository
 2. Run the program using Python 3
 ```bash
 sudo python3 diabetes-cbr.py 
 ```
-4. The program will prompt the user to enter the inputs for a new case
-5. The program will then use the k-NN algorithm to determine the recommended insulin bolus for the new case based on the similarity to existing cases in the JSON file
+4. Choose what algorithm and metric should be used in the config.json file
+5. The program will then read the file and use the selected algorithm and metric to determine the recommended insulin bolus for the new case based on the similarity to existing cases in the JSON file
 6. The recommended insulin bolus will be displayed on the screen
 
 ## Inputs

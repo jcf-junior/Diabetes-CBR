@@ -1,4 +1,5 @@
 {
-    "selected_distance_metric": "euclidean_distance"
+    "selected_distance_metric": "euclidean_distance",
+    "k": "3"
 }
 
