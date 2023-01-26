@@ -60,15 +60,18 @@ def run():
 
     # Set the inputs from file
     new_case = {}
-    new_case["Preprandial BG"] = inputs["Preprandial BG"]
-    new_case["IOB"] = inputs["IOB"]
-    new_case["BG Target"] = inputs["BG Target"]
-    new_case["CHO"] = inputs["CHO"]
-    new_case["Patient weight"] = inputs["Patient weight"]
-    new_case["ICR"] = inputs["ICR"]
-    new_case["ISF"] = inputs["ISF"]
-    new_case["Physical activity preprandial - Duration"] = inputs["Physical activity preprandial - Duration"]
-    new_case["Physical activity preprandial - Heart rate"] = inputs["Physical activity preprandial - Heart rate"]
+    new_case["Preprandial BG"] = preprandial_bg
+    new_case["IOB"] = iob
+    new_case["BG Target"] = bg_target
+    new_case["CHO"] = cho
+    new_case["Patient weight"] = patient_weight
+    new_case["ICR"] = icr
+    new_case["ISF"] = isf
+    new_case["Physical activity preprandial - Duration"] = physical_activity_preprandial_duration
+    new_case["Physical activity preprandial - Heart rate"] = physical_activity_preprandial_heart_rate
+    new_case["Physical activity preprandial - Intensity"] = physical_activity_preprandial_intensity
+    new_case["Physical activity postprandial - Duration"] = physical_activity_postprandial_duration
+    new_case["Physical activity postprandial - Intensity"] = physical_activity_postprandial_intensity
     # Split time of day into hour and minute
     hour, minute = time_of_day.split(':')
     hour = int(hour)
