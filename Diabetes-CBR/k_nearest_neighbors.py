@@ -3,7 +3,8 @@ from math import sqrt
 from Metrics.distance_metrics import *
 import Metrics.distance_metrics as dm
 
-# def run():    
+
+def run():
     ################## Cases ##################
     # read cases from JSON file
     with open("cases.json", "r") as f:
@@ -31,8 +32,8 @@ import Metrics.distance_metrics as dm
     # get k from config.json
     with open("config.json", "r") as f:
         config = json.load(f)
-        k = int(config["k"])        
-    
+        k = int(config["k"])
+
     # Find k neighbors
     def find_nearest_neighbors(new_case, k, selected_distance_metric):
         distances = []
@@ -83,7 +84,10 @@ import Metrics.distance_metrics as dm
     # k = int(input("Enter value of k: "))
 
     # find k nearest neighbors
-    nearest_neighbors = find_nearest_neighbors(new_case, k, selected_distance_metric)
+    nearest_neighbors = find_nearest_neighbors(
+        new_case, k, selected_distance_metric)
+
+    # fix for AttributeError
 
     # determine recommended insulin bolus
     recommended_insulin_bolus = 0
@@ -92,5 +96,5 @@ import Metrics.distance_metrics as dm
     recommended_insulin_bolus /= k
 
     # print recommended insulin bolus
-    print("Recommended Insulin Bolus: {} U".format(round(recommended_insulin_bolus, 2)))
-
+    print("Recommended Insulin Bolus: {} U".format(
+        round(recommended_insulin_bolus, 2)))
