@@ -26,9 +26,9 @@ for i in range(10):
     case["Physical activity preprandial - Intensity"] = random.randint(0, 6)
     case["Physical activity postprandial - Duration"] = random.randint(0, 100)
     case["Physical activity postprandial - Intensity"] = random.randint(0, 6)
-    case["Day time"] = f"{random.randint(0,23)}:{random.randint(0,59)}"
+    case["Time of day"] = f"{random.randint(0,23)}:{random.randint(0,59)}"
     case["Recommended Insulin Bolus"] = round(random.uniform(0, 12), 2)
     cases.append(case)
 
 # insert cases into MongoDB
-cases_collection.insert_many(cases)
+cases_collection.insert_many([{"type" : "cases", "data": case} for case in cases])
