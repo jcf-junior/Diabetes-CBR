@@ -1,4 +1,6 @@
 ###### Requirements without Version Specifiers ######
+# MongoDB 
+pymongo
 # Requirements for k_nearest_neighbors.py algorithm
 importlib
 # Requirements for k_nearest_neighbors.py algorithm

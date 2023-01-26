@@ -47,4 +47,4 @@ sudo python3 diabetes-cbr.py
 
 
 ## Disclaimer: 
-### This program is a simulation and should not be used for medical diagnosis or treatment. It should be used for educational and research purposes only, and it's important to consult with a licensed professional before making any medical decisions.
+### This program is a simulation and should not be used for medical diagnosis or treatment. It should be used for educational and research purposes only. It's important to consult with a licensed professional before making any medical decisions.
