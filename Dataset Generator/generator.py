@@ -1,5 +1,14 @@
 import random
-import json
+from pymongo import MongoClient
+
+# Connect to MongoDB
+client = MongoClient("mongodb://localhost:27017")
+
+# Get the database
+db = client['cbr']
+
+# Get the cases collection
+cases_collection = db['cases']
 
 # generate random cases
 cases = []
@@ -21,6 +30,5 @@ for i in range(10):
     case["Recommended Insulin Bolus"] = round(random.uniform(0, 12), 2)
     cases.append(case)
 
-# write cases to JSON file
-with open("cases.json", "w") as f:
-    json.dump(cases, f)
+# insert cases into MongoDB
+cases_collection.insert_many(cases)
