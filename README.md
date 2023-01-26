@@ -4,21 +4,28 @@ This script generates a dataset of random values within a specific range for eac
 
 # Diabetes-CBR
 
-This program is a simulation of a case-based reasoning (CBR) system for diabetes management. It uses the k-NN algorithm to determine the recommended insulin bolus for a new case based on the similarity to existing cases in a JSON file.
-
+This program is a simulation of a case-based reasoning (CBR) system for diabetes management. It uses a specified algorithm to determine the recommended insulin bolus for a new case based on the similarity to existing cases in a database.
 
 1. Clone or download the repository
 2. Import the necessary requirements
 ```bash
 pip install -r requirements.txt
 ```
-3. Run the program using Python 3
+3. Start the backend server using Python 3
 ```bash
-sudo python3 diabetes-cbr.py 
+sudo python3 db.py 
 ```
-4. Choose what algorithm and metric should be used in the config.json file
-5. The program will then read the file and use the selected algorithm and metric to determine the recommended insulin bolus for the new case based on the similarity to existing cases in the JSON file
-6. The recommended insulin bolus will be displayed on the screen
+4. Generate a testing dataset (optional)
+```bash
+sudo python3 generator.py 
+```
+5. Run the program using Python 3
+```bash
+sudo python3 diabetes_cbr.py 
+```
+6. Choose what algorithm and metric should be used in the db.py file
+7. The program will then retrieve the keys and use the selected algorithm and metric to determine the recommended insulin bolus for the new case based on the similarity to existing cases in the database
+8. The recommended insulin bolus will be displayed on the screen
 
 ## Inputs
 
@@ -40,10 +47,6 @@ sudo python3 diabetes-cbr.py
 ## Output
 
 - Recommended Insulin Bolus- [0-12] U
-
-## Requirements
-- Python 3
-- json library
 
 
 ## Disclaimer: 
