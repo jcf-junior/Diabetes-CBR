@@ -1,8 +1,6 @@
 import json
 from math import sqrt
 from Metrics.distance_metrics import *
-import Metrics.distance_metrics as dm
-
 
 def run():
     ################## Cases ##################
@@ -82,9 +80,6 @@ def run():
 
     # Assign time of day to new_case
     new_case["Time of day"] = time_in_minutes
-
-    # # ask user for value of k
-    # k = int(input("Enter value of k: "))
 
     # find k nearest neighbors
     nearest_neighbors = find_nearest_neighbors(
