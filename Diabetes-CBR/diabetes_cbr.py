@@ -1,19 +1,16 @@
-import json
 import importlib
+import json
 
-# Read the selected algorithm from config.json
+# read selected algorithm from JSON file
 with open("config.json", "r") as f:
     config = json.load(f)
     selected_algorithm = config["selected_algorithm"]
+    imported_module = importlib.import_module(selected_algorithm)
 
-# Import the selected algorithm
-imported_module = importlib.import_module(selected_algorithm)
-
-if __name__ == '__main__':
-# Error handling
-    try:
+# run selected algorithm
+try:
+    if __name__ == '__main__':
         imported_module.run()
-    except AttributeError as e:
-        print("Error: {}".format(e))
-        print("Ensure that the imported module has a 'run' function.")
-    
+except AttributeError as e:
+        print("The selected algorithm does not have a 'run' function.\nExiting...")
+        exit()
