@@ -8,7 +8,11 @@ This program is a simulation of a case-based reasoning (CBR) system for diabetes
 
 ## Installation & Usage
 1. Clone or download the repository
-2. Run the program using Python 3
+2. Import the necessary requirements
+```bash
+pip install -r requirements.txt
+```
+3. Run the program using Python 3
 ```bash
 sudo python3 diabetes-cbr.py 
 ```
