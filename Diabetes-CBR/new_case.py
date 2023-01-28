@@ -1,17 +1,6 @@
 from math import sqrt
-import pymongo
+from db_connection import *
 
-# Connect to the database
-client = pymongo.MongoClient("mongodb://localhost:27017/")
-db = client["cbr"]
-inputs_collection = db["inputs"]
-new_case_collection = db["new_case"]
-
-# read inputs from database
-inputs = inputs_collection.find_one({"type": "inputs"})
-if inputs is None:
-    print("No inputs found in the database.")
-    exit()
 # Assign inputs to variables
 preprandial_bg = inputs["data"]["Preprandial BG"]
 iob = inputs["data"]["IOB"]

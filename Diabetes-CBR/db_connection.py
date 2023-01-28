@@ -7,6 +7,13 @@ db = client["cbr"]
 cases_collection = db["cases"]
 config_collection = db["config"]
 new_case_collection = db["new_case"]
+inputs_collection = db["inputs"]
+
+# read inputs from database
+inputs = inputs_collection.find_one({"type": "inputs"})
+if inputs is None:
+    print("No inputs found in the database.")
+    exit()
 
 # read cases from database
 config = config_collection.find_one({"type": "config"})
