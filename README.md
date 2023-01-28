@@ -1,3 +1,4 @@
+[![CodeFactor](https://www.codefactor.io/repository/github/jcf-junior/diabetes-cbr/badge)](https://www.codefactor.io/repository/github/jcf-junior/diabetes-cbr)
 # Dataset Generator
 
 This script generates a dataset of random values within a specific range for each input. This dataset may not be accurate for real-world applications and should only be used for testing purposes.
