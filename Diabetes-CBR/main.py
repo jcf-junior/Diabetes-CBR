@@ -1,9 +1,6 @@
 import importlib
 from db_connection import *
 
-# Find the config document
-config = config_collection.find_one()
-
 # Get the selected algorithm from the config document
 selected_algorithm = config["data"]["selected_algorithm"]
 

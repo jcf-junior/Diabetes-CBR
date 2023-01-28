@@ -4,7 +4,8 @@ from math import sqrt
 from db_connection import *
 
 # get k from config
-k =int(config["data"]["k"])
+p1=config["parameters"]["p1"]
+k=p1
 
 # Find k neighbors
 def find_nearest_neighbors(new_case, k, selected_distance_metric):
