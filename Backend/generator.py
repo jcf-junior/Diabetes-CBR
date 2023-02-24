@@ -10,7 +10,7 @@ db = client['cbr']
 # Get the cases collection
 cases_collection = db['cases']
 
-# generate random cases
+# generate random valid inputs to create cases 
 cases = []
 for i in range(10):
     case = {}
