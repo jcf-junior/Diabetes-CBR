@@ -33,6 +33,6 @@ else:
     inputs_collection = db['inputs']
     print("Inputs collection already exists.")
 
-# Insert the config
+# Insert the data into their collections
 config_collection.insert_one({"type" : "config", "data" : {"selected_algorithm": "k_nearest_neighbors","selected_distance_metric": "euclidean_distance"}, "parameters" : {"p1": "k,3", "p2": ""}})
 inputs_collection.insert_one({"type" : "inputs", "data" : {"Preprandial BG": 150,"IOB": 2.5,"BG Target": 110,"CHO": 35,"Patient weight": 75,"ICR": 10,"ISF": 40,"Physical activity preprandial - Duration": 20,"Physical activity preprandial - Heart rate": 80,"Physical activity preprandial - Intensity": 4,"Physical activity postprandial - Duration": 10,"Physical activity postprandial - Intensity": 2,"Time of day": "12:30"}})
